@@ -12,11 +12,7 @@ int test1(){
     cin >> x;
     cout << main; //Expected Error: Attempt to write a function
     cin >> main; //Expected Error: Attempt to read a function
-
-    ////////////////////////////////////////////////////////////////////////////
     cout << main(); //Expected Error: Attempt to write void
-    ////////////////////////////////////////////////////////////////////////////
-
     return x;
 }
 bool test2(){
@@ -24,12 +20,14 @@ bool test2(){
     x = test1();
     return; //Expected Error: Missing return value
     return x; //Expected Error: Bad return value
+    return 0; //Expected Error: Bad return value
     return false;
 }
 void test3(){
     int x;
     x = test1();
     return x; //Expected Error: Return with a value in a void function
+    return false; //Expected Error: Return with a value in a void function
 }
 void test4(int y){
     int x;
@@ -37,11 +35,11 @@ void test4(int y){
     if (x){ //Expected Error: Non-bool expression used as an if condition
         return x; //Expected Error: Return with a value in a void function
     }
-    if (x){ //Expected Error: Non-bool expression used as an if condition
+    if (0){ //Expected Error: Non-bool expression used as an if condition
     }
     else {
     }
-    while(x){ //Expected Error: Non-bool expression used as a while condition
+    while(1 + 2){ //Expected Error: Non-bool expression used as a while condition
     }
 }
 void test5(){
@@ -50,4 +48,5 @@ void test5(){
     x(); //Expected Error: Attempt to call a non-function
     test3(x); //Expected Error: Function call with wrong number of args
     test4(x); //Expected Error: Type of actual does not match type of formal
+    test4(1 > 2) //Expected Error: Type of actual does not match type of formal
 }
