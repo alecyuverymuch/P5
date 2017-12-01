@@ -50,3 +50,6 @@ void test5(){
     test4(x); //Expected Error: Type of actual does not match type of formal
     test4(1 > 2); //Expected Error: Type of actual does not match type of formal
 }
+void test6(){
+    
+}
