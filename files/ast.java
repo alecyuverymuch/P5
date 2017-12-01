@@ -921,6 +921,10 @@ class WriteStmtNode extends StmtNode {
             ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
                 "Attempt to write a function");
         }
+        if (myExp.typeCheck().isVoidType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                "Attempt to write void");
+        }
     }
     
     public void unparse(PrintWriter p, int indent) {

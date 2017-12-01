@@ -12,6 +12,7 @@ int test1(){
     cin >> x;
     cout << main; //Expected Error: Attempt to write a function
     cin >> main; //Expected Error: Attempt to read a function
+    cout << test3(); //Expected Error: Attempt to write void
     return x;
 }
 bool test2(){
@@ -25,4 +26,17 @@ void test3(){
     int x;
     x = test1();
     return x; //Expected Error: Return with a value in a void function
+}
+void test4(){
+    int x;
+    x = 0;
+    if (x){ //Expected Error: Non-bool expression used as an if condition
+        return x; //Expected Error: Return with a value in a void function
+    }
+    if (x){ //Expected Error: Non-bool expression used as an if condition
+    }
+    else {
+    }
+    while(x){ //Expected Error: Non-bool expression used as a while condition
+    }
 }
