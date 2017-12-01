@@ -1631,8 +1631,13 @@ class CallExpNode extends ExpNode {
         /*****
          * Alec
          */
+        if (myId == null){
+            ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                "Attempt to call a non-function");
+            return new ErrorType();
+        }
         Type idType = myId.typeCheck();
-        if ((!idType.isFnType() || idType == null) && !idType.isErrorType()){
+        if (!idType.isFnType() && !idType.isErrorType()){
             ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                 "Attempt to call a non-function");
         }

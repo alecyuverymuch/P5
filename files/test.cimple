@@ -45,5 +45,6 @@ void test4(){
     }
 }
 void test5(){
+    int x;
     x(); //Expected Error: Attempt to call a non-function
 }
