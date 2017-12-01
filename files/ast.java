@@ -917,13 +917,17 @@ class WriteStmtNode extends StmtNode {
         /*****
          * Alec
          */
-        if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType()){
-            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
-                "Attempt to write a function");
+        if (myExp instanceof CallExpNode){
+            if (myExp.typeCheck().isVoidType() && !myExp.typeCheck().isErrorType()){
+                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                    "Attempt to write void");
+            }
         }
-        if (myExp.typeCheck().isVoidType() && !myExp.typeCheck().isErrorType()){
-            ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
-                "Attempt to write void");
+        else {
+            if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType()){
+                ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                    "Attempt to write a function");
+            }
         }
     }
     
