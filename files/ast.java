@@ -1636,6 +1636,7 @@ class CallExpNode extends ExpNode {
          * Alec
          */
         if (myId == null){
+            System.out.print("id is null");
             ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                 "Attempt to call a non-function");
             return new ErrorType();
