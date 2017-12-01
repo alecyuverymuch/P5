@@ -1625,8 +1625,11 @@ class AssignNode extends ExpNode {
          */
         Type lhs = myLhs.typeCheck();
         Type exp = myExp.typeCheck();
+        if (myExp instanceof CallExpNode){
+            exp = ((CallExpNode)myExp).callReturnType();
+        }
         if(lhs.isErrorType() || exp.isErrorType()){
-             return new ErrorType();
+            return new ErrorType();
         }
         if(!lhs.equals(exp)){
              ErrMsg.fatal(myLhs.lineNum(),myLhs.charNum(),
