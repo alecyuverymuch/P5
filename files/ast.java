@@ -1182,9 +1182,11 @@ class ReturnStmtNode extends StmtNode {
             if (myExp == null) {
                 ErrMsg.fatal(0, 0, "Missing return value");
             }
-            if (!myExp.typeCheck().equals(fnType) && !myExp.typeCheck().isErrorType()){
-                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
-                    "Bad return value");
+            else {
+                if (!myExp.typeCheck().equals(fnType) && !myExp.typeCheck().isErrorType()){
+                    ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                        "Bad return value");
+                }
             }
         }
     }
