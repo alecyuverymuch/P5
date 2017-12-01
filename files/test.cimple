@@ -10,8 +10,19 @@ int test1(){
     x = 0;
     cout << x;
     cin >> x;
-    cout << main;
-    cin >> main;
-    int f1();
-    cout << f1();
+    cout << main; //Expected Error: Attempt to write a function
+    cin >> main; //Expected Error: Attempt to read a function
+    return x;
+}
+bool test2(){
+    int x;
+    x = test1();
+    return; //Expected Error: Missing return value
+    return x; //Expected Error: Bad return value
+    return false;
+}
+void test3(){
+    int x;
+    x = test1();
+    return x; //Expected Error: Return with a value in a void function
 }

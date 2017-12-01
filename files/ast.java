@@ -263,8 +263,11 @@ class FnBodyNode extends ASTnode {
         myStmtList.nameAnalysis(symTab);
     }  
 
-    public void typeCheck(){
-	    myStmtList.typeCheck();
+    public void typeCheck(Type fnType){
+        /*****
+         * Alec
+         */
+	    myStmtList.typeCheck(fnType);
     }  
     
     public void unparse(PrintWriter p, int indent) {
@@ -294,6 +297,16 @@ class StmtListNode extends ASTnode {
 
     public void typeCheck(){
 	    for (StmtNode node : myStmts) {
+            node.typeCheck(); //maybe a bit more
+        }
+    }
+
+    public void typeCheck(Type fnType){
+        /*****
+         * Alec
+         */
+	    for (StmtNode node : myStmts) {
+            node.setFnReturnType(fnType);
             node.typeCheck(); //maybe a bit more
         }
     }
@@ -521,8 +534,12 @@ class FnDeclNode extends DeclNode {
     }  
 
     public void typeCheck(){
-	myBody.typeCheck();
-   }
+        /*****
+         * Alec
+         */
+        Type fnReturnType = myType.type();
+	    myBody.typeCheck(fnReturnType);
+    }
     
     public void unparse(PrintWriter p, int indent) {
         doIndent(p, indent);
@@ -757,8 +774,15 @@ class StructNode extends TypeNode {
 // **********************************************************************
 
 abstract class StmtNode extends ASTnode {
+    /*****
+     * Alec
+     */
+    public Type fnType = new VoidType();
     abstract public void nameAnalysis(SymTable symTab);
     abstract public void typeCheck();
+    public void setFnReturnType(Type fnReturnType){
+        fnType = fnReturnType;
+    }
 }
 
 class AssignStmtNode extends StmtNode {
@@ -946,7 +970,11 @@ class IfStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        if (!myExp.typeCheck().isBoolType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                "Non-bool expression used as an if condition");
+        }
+        myStmtList.typeCheck(fnType);
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -1013,7 +1041,11 @@ class IfElseStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        if (!myExp.typeCheck().isBoolType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                "Non-bool expression used as an if condition");
+        }
+        myStmtList.typeCheck(fnType);
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -1071,7 +1103,11 @@ class WhileStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        if (!myExp.typeCheck().isBoolType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                "Non-bool expression used as a while condition");
+        }
+        myStmtList.typeCheck(fnType);
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -1108,6 +1144,7 @@ class CallStmtNode extends StmtNode {
         /*****
          * Alec
          */
+        myCall.typeCheck();
     }
 
     public void unparse(PrintWriter p, int indent) {
@@ -1140,6 +1177,22 @@ class ReturnStmtNode extends StmtNode {
         /*****
          * Alec
          */
+        if (fnType.equals(new VoidType())){
+            if (myExp != null) {
+                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                    "Return with a value in a void function");
+            }
+        }
+        else {
+            if (myExp == null) {
+                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                    "Missing return value");
+            }
+            if (!myExp.typeCheck().equals(fnType) && !myExp.typeCheck().isErrorType()){
+                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
+                    "Bad return value");
+            }
+        }
     }
 
     public void unparse(PrintWriter p, int indent) {
