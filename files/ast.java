@@ -262,6 +262,13 @@ class FnBodyNode extends ASTnode {
         myDeclList.nameAnalysis(symTab);
         myStmtList.nameAnalysis(symTab);
     }  
+
+    public void typeCheck(Type fnType){
+        /*****
+         * Alec
+         */
+	    myStmtList.typeCheck(fnType);
+    }  
     
     public void unparse(PrintWriter p, int indent) {
         myDeclList.unparse(p, indent);
@@ -287,12 +294,6 @@ class StmtListNode extends ASTnode {
             node.nameAnalysis(symTab);
         }
     }    
-
-    public void typeCheck(){
-	    for (StmtNode node : myStmts) {
-            node.typeCheck(); //maybe a bit more
-        }
-    }
 
     public void typeCheck(Type fnType){
         /*****
