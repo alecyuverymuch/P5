@@ -320,6 +320,10 @@ class ExpListNode extends ASTnode {
     public ExpListNode(List<ExpNode> S) {
         myExps = S;
     }
+
+    public List<ExpNode> getList(){
+        return myExps;
+    }
     
     /**
      * nameAnalysis
@@ -1640,9 +1644,32 @@ class CallExpNode extends ExpNode {
         if (!idType.isFnType() && !idType.isErrorType()){
             ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                 "Attempt to call a non-function");
+            return new ErrorType();
         }
         else {
             SemSym sym = myId.sym();
+            if (!sym.getType().isFnType() && !sym.getType().isErrorType()){
+                ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                    "Attempt to call a non-function");
+                return new ErrorType();
+            }
+            if (myExpList.getList().size() != ((FnSym)sym).getNumParams()){
+                ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                    "Function call with wrong number of args");
+                return new ErrorType();
+            }
+            //TODO: Check params
+            int index = 0;
+            LinkedList<ExpNode> actualsList = myExpList.getList();
+            LinkedList<Type> formalsList = ((FnSym)sym).getParamTypes();
+            for (int i = 0; i < list.size(); i++) {
+                if (!actualsList.get(i).typeCheck().equals(formalsList.get(i))){
+                    ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                        "Type of actual does not match type of formal");
+                    return new ErrorType();
+                }
+            }
+            
         }
         // Check params
 	    return idType; //return func call type

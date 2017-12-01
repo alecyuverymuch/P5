@@ -31,7 +31,7 @@ void test3(){
     x = test1();
     return x; //Expected Error: Return with a value in a void function
 }
-void test4(){
+void test4(int y){
     int x;
     x = 0;
     if (x){ //Expected Error: Non-bool expression used as an if condition
@@ -45,6 +45,9 @@ void test4(){
     }
 }
 void test5(){
-    int x;
+    bool x;
+    x = false;
     x(); //Expected Error: Attempt to call a non-function
+    test3(x); //Expected Error: Function call with wrong number of args
+    test4(x); //Expected Error: Type of actual does not match type of formal
 }
