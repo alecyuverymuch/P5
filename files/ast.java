@@ -1662,7 +1662,7 @@ class CallExpNode extends ExpNode {
             int index = 0;
             LinkedList<ExpNode> actualsList = myExpList.getList();
             LinkedList<Type> formalsList = ((FnSym)sym).getParamTypes();
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < actualsList.size(); i++) {
                 if (!actualsList.get(i).typeCheck().equals(formalsList.get(i))){
                     ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                         "Type of actual does not match type of formal");
