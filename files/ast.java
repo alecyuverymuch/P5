@@ -1765,45 +1765,65 @@ abstract class BinaryExpNode extends ExpNode {
     }
 
     protected Type relationalOperator(){
-	boolean error = false;
-	if(!myExp1.typeCheck().isIntType() && !myExp1.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
-		         "Relational operator applied to non-numeric operand");
-	    error = true;
-	}
-	if(!myExp2.typeCheck().isIntType() && !myExp2.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
-		         "Relational operator applied to non-numeric operand");
-	    error = true;
-	}
-	//additional checks here
-	if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
-	    return new ErrorType();
-	}
-	return new BoolType();
+        boolean error = false;
+        if(!myExp1.typeCheck().isIntType() && !myExp1.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
+                    "Relational operator applied to non-numeric operand");
+            error = true;
+        }
+        if(!myExp2.typeCheck().isIntType() && !myExp2.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
+                    "Relational operator applied to non-numeric operand");
+            error = true;
+        }
+        //additional checks here
+        if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
+            return new ErrorType();
+        }
+        return new BoolType();
     }
 
     protected Type logicalOperator(){
-	boolean error = false;
-	if(!myExp1.typeCheck().isBoolType() && !myExp1.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
-		         "Logical operator applied to non-bool operand");
-	    error = true;
-	}
-	if(!myExp2.typeCheck().isBoolType() && !myExp2.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
-		         "Logical operator applied to non-bool operand");
-	    error = true;
-	}
-	//additional checks here
-	if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
-	    return new ErrorType();
-	}
-	return new BoolType();
+        boolean error = false;
+        if(!myExp1.typeCheck().isBoolType() && !myExp1.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
+                    "Logical operator applied to non-bool operand");
+            error = true;
+        }
+        if(!myExp2.typeCheck().isBoolType() && !myExp2.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
+                    "Logical operator applied to non-bool operand");
+            error = true;
+        }
+        //additional checks here
+        if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
+            return new ErrorType();
+        }
+        return new BoolType();
     }
 
     protected Type equalityOperator(){
-	return null; //to do != and == 
+        if (myExp1.typeCheck().isErrorType() || myExp2.typeCheck().isErrorType()){
+            return new ErrorType();
+        }
+        if (!myExp1.typeCheck().equals(myExp2.typeCheck())){
+            ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), 
+                "Type mismatch");
+            return new ErrorType();
+        }
+        if (myExp1 instanceof CallExpNode && myExp2 instanceof CallExpNode){
+            if (((CallExpNode)myExp1).callReturnType().equals(new VoidType())){
+                ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), 
+                    "Equality operator applied to void functions");
+                return new ErrorType();
+            }
+            if (((CallExpNode)myExp2).callReturnType().equals(new VoidType())){
+                ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), 
+                    "Equality operator applied to void functions");
+                return new ErrorType();
+            }
+        }
+	    return new BoolType(); //to do != and == 
     }
 
     public int lineNum(){
@@ -1997,7 +2017,7 @@ class EqualsNode extends BinaryExpNode {
     }
 
     public Type typeCheck(){ 
-	return equalityOperator();
+	    return equalityOperator();
     }
 }
 
@@ -2015,7 +2035,7 @@ class NotEqualsNode extends BinaryExpNode {
     }
 
     public Type typeCheck(){ 
-	return equalityOperator();
+	    return equalityOperator();
     }
 }
 
