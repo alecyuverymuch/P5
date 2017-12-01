@@ -1637,7 +1637,7 @@ class CallExpNode extends ExpNode {
                 "Attempt to call a non-function");
         }
         else {
-            Sym sym = myId.sym();
+            SemSym sym = myId.sym();
         }
         // Check params
 	    return idType; //return func call type
