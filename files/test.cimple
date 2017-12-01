@@ -16,7 +16,7 @@ int test1(){
     ////////////////////////////////////////////////////////////////////////////
     cout << main(); //Expected Error: Attempt to write void
     ////////////////////////////////////////////////////////////////////////////
-    
+
     return x;
 }
 bool test2(){
@@ -43,4 +43,7 @@ void test4(){
     }
     while(x){ //Expected Error: Non-bool expression used as a while condition
     }
+}
+void test5(){
+    x(); //Expected Error: Attempt to call a non-function
 }

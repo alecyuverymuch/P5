@@ -1631,7 +1631,16 @@ class CallExpNode extends ExpNode {
         /*****
          * Alec
          */
-	    return myId.typeCheck(); //return func call type
+        Type idType = myId.typeCheck();
+        if (!idType.isFnType() && !idType.isErrorType()){
+            ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                "Attempt to call a non-function");
+        }
+        else {
+            Sym sym = myId.sym();
+        }
+        // Check params
+	    return idType; //return func call type
     }
 
     public Type callReturnType(){
