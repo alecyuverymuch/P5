@@ -1636,7 +1636,6 @@ class CallExpNode extends ExpNode {
          * Alec
          */
         if (myId == null){
-            System.out.print("id is null");
             ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                 "Attempt to call a non-function");
             return new ErrorType();
@@ -1659,7 +1658,6 @@ class CallExpNode extends ExpNode {
                     "Function call with wrong number of args");
                 return new ErrorType();
             }
-            //TODO: Check params
             int index = 0;
             LinkedList<ExpNode> actualsList = new LinkedList<ExpNode>(myExpList.getList());
             LinkedList<Type> formalsList = new LinkedList<Type>(((FnSym)sym).getParamTypes());
