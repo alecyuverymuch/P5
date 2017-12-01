@@ -1,9 +1,9 @@
-int main(){
+void main(){
     int a;
     bool b;
     a = 1;
     b = true;
-    return a;
+    return;
 }
 int test1(){
     int x;
@@ -12,7 +12,7 @@ int test1(){
     cin >> x;
     cout << main; //Expected Error: Attempt to write a function
     cin >> main; //Expected Error: Attempt to read a function
-    cout << test3(); //Expected Error: Attempt to write void
+    cout << main(); //Expected Error: Attempt to write void
     return x;
 }
 bool test2(){
