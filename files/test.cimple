@@ -48,5 +48,5 @@ void test5(){
     x(); //Expected Error: Attempt to call a non-function
     test3(x); //Expected Error: Function call with wrong number of args
     test4(x); //Expected Error: Type of actual does not match type of formal
-    test4(1 > 2) //Expected Error: Type of actual does not match type of formal
+    test4(1 > 2); //Expected Error: Type of actual does not match type of formal
 }
