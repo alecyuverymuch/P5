@@ -918,17 +918,14 @@ class WriteStmtNode extends StmtNode {
          * Alec
          */
         if (myExp instanceof CallExpNode){
-            System.out.print("Check-1: " + myExp.typeCheck().toString());
-            if (myExp.typeCheck().isVoidType() && !myExp.typeCheck().isErrorType()){
-                System.out.print("Check-1a");
+            if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType() 
+                && myExp.callReturnType().equals(new VoidType())){
                 ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
                     "Attempt to write void");
             }
         }
         else {
-            System.out.print("Check-2");
             if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType()){
-                System.out.print("Check-2a");
                 ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
                     "Attempt to write a function");
             }
@@ -1399,6 +1396,18 @@ class IdNode extends ExpNode {
 	    return mySym.getType();
     }
 
+    public Type callReturnType(){
+        /*****
+         * Alec
+         */
+        if (mySym instanceof FnSym){
+            return (FnSym)mySym.getReturnType();
+        }
+        else {
+            return null;
+        }
+    }
+
     public void unparse(PrintWriter p, int indent) {
         p.print(myStrVal);
         if (mySym != null) {
@@ -1623,6 +1632,10 @@ class CallExpNode extends ExpNode {
          * Alec
          */
 	    return myId.typeCheck(); //return func call type
+    }
+
+    public Type callReturnType(){
+        return myId.callReturnType();
     }
     
     // ** unparse **
