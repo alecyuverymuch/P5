@@ -919,7 +919,7 @@ class WriteStmtNode extends StmtNode {
          */
         if (myExp instanceof CallExpNode){
             if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType() 
-                && myExp.callReturnType().equals(new VoidType())){
+                && ((CallExpNode)myExp).callReturnType().equals(new VoidType())){
                 ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
                     "Attempt to write void");
             }
@@ -1401,7 +1401,7 @@ class IdNode extends ExpNode {
          * Alec
          */
         if (mySym instanceof FnSym){
-            return (FnSym)mySym.getReturnType();
+            return ((FnSym)mySym).getReturnType();
         }
         else {
             return null;
