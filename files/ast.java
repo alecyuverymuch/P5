@@ -1180,8 +1180,7 @@ class ReturnStmtNode extends StmtNode {
         }
         else {
             if (myExp == null) {
-                ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
-                    "Missing return value");
+                ErrMsg.fatal(0, 0, "Missing return value");
             }
             if (!myExp.typeCheck().equals(fnType) && !myExp.typeCheck().isErrorType()){
                 ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
