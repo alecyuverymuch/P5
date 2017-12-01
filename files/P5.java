@@ -198,8 +198,8 @@ public class P5 {
 	}
 	
     public static void main(String[] args){
-    	//P5 instance = new P5(args);
-	P5 instance = new P5(new String[]{"test.cimple","test.out"});
+    	P5 instance = new P5(args);
+	//P5 instance = new P5(new String[]{"test.cimple","test.out"});
     	instance.run();
     }
 }

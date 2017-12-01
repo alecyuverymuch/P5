@@ -775,8 +775,8 @@ class AssignStmtNode extends StmtNode {
     }
   
     public void typeCheck(){
-	myAssign.typeCheck();
-   }
+	    myAssign.typeCheck();
+    }
     
     public void unparse(PrintWriter p, int indent) {
         doIndent(p, indent);
@@ -802,10 +802,10 @@ class PostIncStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-	if(!myExp.typeCheck().isIntType() && !myExp.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
-		         "Arithmetic operator applied to non-numeric operand");
-	}
+        if(!myExp.typeCheck().isIntType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                    "Arithmetic operator applied to non-numeric operand");
+        }
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -832,10 +832,10 @@ class PostDecStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-	if(!myExp.typeCheck().isIntType() && !myExp.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
-		         "Arithmetic operator applied to non-numeric operand");
-	}
+        if(!myExp.typeCheck().isIntType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                    "Arithmetic operator applied to non-numeric operand");
+        }
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -862,7 +862,13 @@ class ReadStmtNode extends StmtNode {
     }    
     
     public void typeCheck(){
-
+        /*****
+         * Alec
+         */
+        if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                "Attempt to read a function");
+        }
     }
 
     public void unparse(PrintWriter p, int indent) {
@@ -890,7 +896,13 @@ class WriteStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        /*****
+         * Alec
+         */
+        if (myExp.typeCheck().isFnType() && !myExp.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
+                "Attempt to write a function");
+        }
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -1093,7 +1105,9 @@ class CallStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        /*****
+         * Alec
+         */
     }
 
     public void unparse(PrintWriter p, int indent) {
@@ -1123,7 +1137,9 @@ class ReturnStmtNode extends StmtNode {
     }
 
     public void typeCheck(){
-
+        /*****
+         * Alec
+         */
     }
 
     public void unparse(PrintWriter p, int indent) {
@@ -1461,7 +1477,7 @@ class DotAccessExpNode extends ExpNode {
     }    
 
     public Type typeCheck(){
-	return mySym.getType(); 
+	    return mySym.getType(); 
     }
     
     public void unparse(PrintWriter p, int indent) {
@@ -1494,9 +1510,9 @@ class AssignNode extends ExpNode {
     }
 
     public Type typeCheck(){
-	myLhs.typeCheck(); //returns type
-	myExp.typeCheck(); //more checks needed
-	return null; //find type of lhs and rhs compare return type 
+        myLhs.typeCheck(); //returns type
+        myExp.typeCheck(); //more checks needed
+        return null; //find type of lhs and rhs compare return type 
     }  
   
     public void unparse(PrintWriter p, int indent) {
@@ -1542,7 +1558,10 @@ class CallExpNode extends ExpNode {
     }    
 
     public Type typeCheck(){
-	return null; //return func call type
+        /*****
+         * Alec
+         */
+	    return new FnType(); //return func call type
     }
     
     // ** unparse **
@@ -1556,11 +1575,11 @@ class CallExpNode extends ExpNode {
     }
 
     public int lineNum(){
-	return myId.lineNum();
+	    return myId.lineNum();
     }
 
     public int charNum(){
-	return myId.charNum();
+	    return myId.charNum();
     }
 
     // 2 kids
@@ -1584,11 +1603,11 @@ abstract class UnaryExpNode extends ExpNode {
     abstract public Type typeCheck();
 
     public int lineNum(){
-	return myExp.lineNum();
+	    return myExp.lineNum();
     }
 
     public int charNum(){
-	return myExp.charNum();
+	    return myExp.charNum();
     }  
     // one child
     protected ExpNode myExp;
@@ -1613,22 +1632,22 @@ abstract class BinaryExpNode extends ExpNode {
     abstract public Type typeCheck();
     
     protected Type arithmeticOperator(){
-	boolean error = false;
-	if(!myExp1.typeCheck().isIntType() && !myExp1.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
-		         "Arithmetic operator applied to non-numeric operand");
-	    error = true;
-	}
-	if(!myExp2.typeCheck().isIntType() && !myExp2.typeCheck().isErrorType()){
-	    ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
-		         "Arithmetic operator applied to non-numeric operand");
-	    error = true;
-	}
-	//additional checks here
-	if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
-	    return new ErrorType();
-	}
-	return new IntType();
+        boolean error = false;
+        if(!myExp1.typeCheck().isIntType() && !myExp1.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
+                    "Arithmetic operator applied to non-numeric operand");
+            error = true;
+        }
+        if(!myExp2.typeCheck().isIntType() && !myExp2.typeCheck().isErrorType()){
+            ErrMsg.fatal(myExp2.lineNum(),myExp2.charNum(),
+                    "Arithmetic operator applied to non-numeric operand");
+            error = true;
+        }
+        //additional checks here
+        if(error || myExp2.typeCheck().isErrorType() || myExp1.typeCheck().isErrorType()){
+            return new ErrorType();
+        }
+        return new IntType();
     }
 
     protected Type relationalOperator(){

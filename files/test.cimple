@@ -5,3 +5,7 @@ int main(){
     b = true;
     return a;
 }
+int test1(){
+    cout << main();
+    cin >> main();
+}
