@@ -262,13 +262,6 @@ class FnBodyNode extends ASTnode {
         myDeclList.nameAnalysis(symTab);
         myStmtList.nameAnalysis(symTab);
     }  
-
-    public void typeCheck(Type fnType){
-        /*****
-         * Alec
-         */
-	    myStmtList.typeCheck(fnType);
-    }  
     
     public void unparse(PrintWriter p, int indent) {
         myDeclList.unparse(p, indent);
@@ -1045,7 +1038,8 @@ class IfElseStmtNode extends StmtNode {
             ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
                 "Non-bool expression used as an if condition");
         }
-        myStmtList.typeCheck(fnType);
+        myThenStmtList.typeCheck(fnType);
+        myElseStmtList.typeCheck(fnType);
     }
     
     public void unparse(PrintWriter p, int indent) {
