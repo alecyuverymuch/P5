@@ -1618,7 +1618,7 @@ class CallExpNode extends ExpNode {
         /*****
          * Alec
          */
-	    return new FnType(); //return func call type
+	    return myId.typeCheck(); //return func call type
     }
     
     // ** unparse **
