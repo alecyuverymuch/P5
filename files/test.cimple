@@ -6,6 +6,6 @@ int main(){
     return a;
 }
 int test1(){
-    cout << main();
-    cin >> main();
+    cout << main;
+    cin >> main;
 }
