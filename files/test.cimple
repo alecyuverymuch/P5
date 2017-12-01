@@ -12,7 +12,11 @@ int test1(){
     cin >> x;
     cout << main; //Expected Error: Attempt to write a function
     cin >> main; //Expected Error: Attempt to read a function
+
+    ////////////////////////////////////////////////////////////////////////////
     cout << main(); //Expected Error: Attempt to write void
+    ////////////////////////////////////////////////////////////////////////////
+    
     return x;
 }
 bool test2(){

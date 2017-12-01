@@ -919,7 +919,7 @@ class WriteStmtNode extends StmtNode {
          */
         if (myExp instanceof CallExpNode){
             System.out.print("Check1");
-            if (myExp.typeCheck().isVoidType() && !myExp.typeCheck().isErrorType()){
+            if (myExp.typeCheck().isVoidType() ){//&& !myExp.typeCheck().isErrorType()){
                 System.out.print("Checka");
                 ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
                     "Attempt to write void");
