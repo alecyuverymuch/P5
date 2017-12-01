@@ -12,4 +12,6 @@ int test1(){
     cin >> x;
     cout << main;
     cin >> main;
+    int f1();
+    cout << f1();
 }
