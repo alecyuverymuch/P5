@@ -141,8 +141,8 @@ void test13(){//Expected Errors : Type mismatch - 17
 void test14(){ //Number of Erorrs - 8
    cout << abc;  //Expected Errors : Attempt to write a struct name
    cout << def.efg;  //Expected Errors : Attempt to write a struct variable
-   cin << abc; //Expected Errors : Attempt to read a struct name
-   cin << def.efg; //Expected Errors : Attempt to read a struct variable
+   cin >> abc; //Expected Errors : Attempt to read a struct name
+   cin >> def.efg; //Expected Errors : Attempt to read a struct variable
    bool b;
    b = abc == abc; //Expected Errors : Equality operator applied to struct names
    b = def.efg == def.efg; //Expected Errors : Equality operator applied to struct variables
