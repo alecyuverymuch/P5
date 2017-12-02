@@ -1981,7 +1981,7 @@ class UnaryMinusNode extends UnaryExpNode {
         if (myExp instanceof CallExpNode){
             e = ((CallExpNode)myExp).callReturnType();
         }
-        if(!myExp.typeCheck().isIntType()){
+        if(!e.isIntType()){
             ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
                     "Arithmetic operator applied to non-numeric operand");
             return new ErrorType();
