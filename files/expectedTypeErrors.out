@@ -1,0 +1,39 @@
+16:13 ***ERROR*** Attempt to write a function
+17:12 ***ERROR*** Attempt to read a function
+18:13 ***ERROR*** Attempt to write void
+0:0 ***ERROR*** Missing return value
+25:12 ***ERROR*** Bad return value
+26:12 ***ERROR*** Bad return value
+32:12 ***ERROR*** Return with a value in a void function
+33:12 ***ERROR*** Return with a value in a void function
+38:9 ***ERROR*** Non-bool expression used as an if condition
+39:16 ***ERROR*** Return with a value in a void function
+41:9 ***ERROR*** Non-bool expression used as an if condition
+45:11 ***ERROR*** Non-bool expression used as a while condition
+51:5 ***ERROR*** Attempt to call a non-function
+52:5 ***ERROR*** Function call with wrong number of args
+53:5 ***ERROR*** Type of actual does not match type of formal
+54:5 ***ERROR*** Type of actual does not match type of formal
+58:9 ***ERROR*** Equality operator applied to void functions
+60:9 ***ERROR*** Equality operator applied to functions
+63:5 ***ERROR*** Function assignment
+68:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+69:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+70:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+70:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+71:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+72:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+73:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+74:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+75:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+76:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+77:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+78:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+79:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+80:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+85:9 ***ERROR*** Relational operator applied to non-numeric operand
+86:13 ***ERROR*** Relational operator applied to non-numeric operand
+87:9 ***ERROR*** Relational operator applied to non-numeric operand
+87:14 ***ERROR*** Relational operator applied to non-numeric operand
+88:14 ***ERROR*** Relational operator applied to non-numeric operand
+89:13 ***ERROR*** Relational operator applied to non-numeric operand
