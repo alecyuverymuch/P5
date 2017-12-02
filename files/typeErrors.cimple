@@ -113,7 +113,7 @@ void test12(){//Expected Errors : Non-bool expression used as a while condition 
     bool c;
     while(b){}
     while(test9()){}
-    while(def.efg){}
+    while(hij.efg){}
     while(abc){}
     while(5){}
 }
