@@ -69,13 +69,13 @@ void test8(){//Expected Errors : Arithmetic operator applied to non-numeric oper
     b = false - b;
     b = c * false;
     b = 5 / c;
-    b = def.efg + 5;
+    b = hij.efg + 5;
     b = abc - 6;
     b = test9() + 2;
     c++;
     c--;
-    def.efg++;
-    def.efg--;
+    hij.efg++;
+    hij.efg--;
     abc++;
     abc--;
 }
@@ -86,7 +86,7 @@ void test9(){//Expected Errors : Relational operator applied to non-numeric oper
     c = 5 > c;
     c = c >=c;
     c = 6 <= abc;
-    c = def.efg < 5;
+    c = hij.efg < 5;
     c = test9() > 2; 
 }
 void test10(){//Expected Errors : Logical operator applied to non-bool operand - 6
@@ -95,7 +95,7 @@ void test10(){//Expected Errors : Logical operator applied to non-bool operand -
     c = !b;
     c = false && b;
     c = abc || false;
-    c = def.efg && true;
+    c = hij.efg && true;
     c = !test9();
     c = test9() || false;
 }
@@ -104,7 +104,7 @@ void test11(){//Expected Errors : Non-bool expression used as an if condition - 
     bool c;
     if(b){}
     if(test9()){}
-    if(def.efg){}
+    if(hij.efg){}
     if(abc){}
     if(5){}
 }
@@ -126,26 +126,26 @@ void test13(){//Expected Errors : Type mismatch - 17
    c = 5;
    b = test9();
    c = abc;
-   b = def.efg;
+   b = hij.efg;
    c = c == b;
    c = c == abc;
-   c = c == def.efg;
+   c = c == hij.efg;
    c = c == test9();
    c = b == abc;
-   c = b == def.efg;
+   c = b == hij.efg;
    c = b == test9();
-   c = abc == def.efg;
+   c = abc == hij.efg;
    c = abc == test9();
-   c = def.efg == test9();
+   c = hij.efg == test9();
 }
 void test14(){ //Number of Erorrs - 8
     bool b;
    cout << abc;  //Expected Errors : Attempt to write a struct name
-   cout << def.efg;  //Expected Errors : Attempt to write a struct variable
+   cout << hij.efg;  //Expected Errors : Attempt to write a struct variable
    cin >> abc; //Expected Errors : Attempt to read a struct name
-   cin >> def.efg; //Expected Errors : Attempt to read a struct variable
+   cin >> hij.efg; //Expected Errors : Attempt to read a struct variable
    b = abc == abc; //Expected Errors : Equality operator applied to struct names
-   b = def.efg == def.efg; //Expected Errors : Equality operator applied to struct variables
+   b = hij.efg == hij.efg; //Expected Errors : Equality operator applied to struct variables
    abc = abc;  //Expected Errors : Struct name assignment
-   def.efg = def.efg;  //Expected Errors : Struct variable assignment
+   hij.efg = hij.efg;  //Expected Errors : Struct variable assignment
 }
