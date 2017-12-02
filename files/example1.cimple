@@ -83,12 +83,12 @@ void test9(int l) {
 // Tests if statements
 void test10(int l) {
     if (l >= 6) {
-        return true;
+        return;
     }
 }
 int test11(int l) {
     if (l <= 6) {
-        return;
+        return l;
     }
 }
 // Tests if else statements with calls to functions (with and without parameters)
@@ -99,7 +99,7 @@ bool test12(bool m, int n, int o) {
     else {
         test6(m, !m);
     }
-    return 5*10;
+    return 5 < 10;
 }
 // Tests while statements
 void test13(int j, bool k, int l, bool m) {
@@ -107,11 +107,11 @@ void test13(int j, bool k, int l, bool m) {
         bool x; 
         x = 7 != 7; 
     }
-    return 6/7;
+    return;
 }
 // Tests a large expression
 int test14(int s, bool t) {
-    t = !((7 + s - 5 * 4 / 2) == true) && (7 <=5 )||(7 != 7)||(7 <5 )||(7 >=5 )||(7 >5 );
+    t = !((7 + s - 5 * 4 / 2) == 9) && (7 <=5 )||(7 != 7)||(7 <5 )||(7 >=5 )||(7 >5 );
 }
 // Tests strings
 bool test16(bool b){
@@ -148,16 +148,13 @@ int test19(){
 }
 // Tests structs
 void test20() {
-    x = aaa.z1;
-    x = bbb.g;
-    x = ccc.ghi5.ghi3.z1;
-    ccc.ghi5.e = x;
-    y = bbb.f && aaa.z2 && ccc.ghi5.ghi3.z2;
-}
-// Tests duplicate functions
-int test20(int i){
-    x = i;
-    return x;
+////////////////////////////////////////////////////////////////////////////////
+    //x = aaa.z1;
+    //x = bbb.g;
+    //x = ccc.ghi5.ghi3.z1;
+    //ccc.ghi5.e = x;
+    //y = bbb.f && aaa.z2 && ccc.ghi5.ghi3.z2;
+////////////////////////////////////////////////////////////////////////////////
 }
 // Comprehensive Tests
 int main() { 
