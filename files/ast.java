@@ -2002,10 +2002,14 @@ class NotNode extends UnaryExpNode {
     }
 
     public Type typeCheck(){
-        if(myExp.typeCheck().isErrorType()){
+        Type e = myExp.typeCheck();
+        if(e.isErrorType()){
             return new ErrorType();
         }
-        if(!myExp.typeCheck().isBoolType()){
+        if (myExp instanceof CallExpNode){
+            e = ((CallExpNode)myExp).callReturnType();
+        }
+        if(!e.isBoolType()){
             ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
                     "Logical operator applied to non-bool operand");
             return new ErrorType();
