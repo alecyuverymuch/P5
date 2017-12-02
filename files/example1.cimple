@@ -145,6 +145,7 @@ int test19(){
         something = something + 2;
         y = true;
     }
+    return something;
 }
 // Tests structs
 void test20() {
@@ -172,7 +173,7 @@ int main() {
     x = 1; 
     y = true; 
     if (y) { 
-        return; 
+        return x; 
     } 
     if (!b1) {
         int c;
