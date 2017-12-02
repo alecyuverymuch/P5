@@ -122,7 +122,7 @@ void test5(){
     x = false;
     y = true;
     z = x == true || -5 != a && y != false || 1 == 1;
-    y = (func1() == 5) || !func2(a) != z;
+    y = 5 == func1() || !func2(a) != z;
     x = h.one.two == true || -5 != h.two && h.three != false || h.one.one == h.two;
     if (5 == 3 || (func1() != h.two)){
         x = func1() != 3 || a + b + c == 0 || h.two == 3;
