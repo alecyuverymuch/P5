@@ -1,61 +1,198 @@
-void main(){
-    int a;
-    bool b;
-    a = 1;
-    b = true;
-    return;
-}
-int test1(){
+# Tests comments
+// Tests global variable declarations
+int abc1;
+int abc2;
+int x;
+bool def1;
+bool def2;
+bool y;
+// Tests struct declarations
+struct ghi1 { int z1; bool z2; int x;};
+struct ghi2 { int e; bool f; int g; bool h; struct ghi1 ghi3;};
+struct ghi4 { struct ghi2 ghi5; struct ghi1 ghi1; };
+struct ghi4 ghi6;
+// Test function declaration and struct dot access
+void test1() {}
+// Test function declaration with a parameter and struct dot access with operations
+void test2(int one) {}
+// Test function declaration with multiple parameters
+void test3(int one, int two, bool three, bool four){}
+// Test function declaration with body
+int test4() {
     int x;
-    x = 0;
-    cout << x;
-    cin >> x;
-    cout << main; //Expected Error: Attempt to write a function
-    cin >> main; //Expected Error: Attempt to read a function
-    cout << main(); //Expected Error: Attempt to write void
+    x = 4;
     return x;
 }
-bool test2(){
-    int x;
-    x = test1();
-    return; //Expected Error: Missing return value
-    return x; //Expected Error: Bad return value
-    return 0; //Expected Error: Bad return value
-    return false;
+// Test function declaration with parameters and integer functions
+int test5(int x, int i) {
+    int y;
+    int z;
+    y = 1;
+    z = 2;
+    x++;
+    x--;
+    x = 4 + 4;
+    x = 4 * 4;
+    x = 4 - 4;
+    x = 4 / 4;
+    x = y;
+    y = -x;
+    x = x + y * z - 2 * 4;
+    x = (x + y) * ((z - 2) - (2 * 4));
+    return i;
 }
-void test3(){
-    int x;
-    x = test1();
-    return x; //Expected Error: Return with a value in a void function
-    return false; //Expected Error: Return with a value in a void function
+// Tests function with bool functions
+bool test6(bool x, bool y) {
+    bool z;
+    z = true;
+    z = false;
+    z = x || y;
+    z = x && y;
+    z = x && y || z;
+    z = !x;
+    z = !x || y;
+    z = !(x || (y && z));
+    return z;
 }
-void test4(int y){
-    int x;
-    x = 0;
-    if (x){ //Expected Error: Non-bool expression used as an if condition
-        return x; //Expected Error: Return with a value in a void function
+// Tests function with comparisons
+bool test7(int x, int y, int z) {
+    bool a;
+    a = x > y;
+    a = x < y;
+    a = x >= y;
+    a = x <= y;
+    a = x == y;
+    a = x != y;
+    a = x + 1 == y * 2;
+    a = x > y && x > z || y < z;
+    a = !(x + 2 > 0 || y <= z* 4 && z < 2 + 2);
+    return a;
+}
+// Tests cin
+bool test8() {
+    int k; 
+    cin >> k;
+} 
+// Tests cout
+void test9(int l) {
+    cout << l;
+}
+// Tests if statements
+void test10(int l) {
+    if (l >= 6) {
+        return true;
     }
-    if (0){ //Expected Error: Non-bool expression used as an if condition
+}
+int test11(int l) {
+    if (l <= 6) {
+        return;
+    }
+}
+// Tests if else statements with calls to functions (with and without parameters)
+bool test12(bool m, int n, int o) {
+    if (n<o) {
+        test6(true, false);
     }
     else {
+        test6(m, !m);
     }
-    while(1 + 2){ //Expected Error: Non-bool expression used as a while condition
+    return 5*10;
+}
+// Tests while statements
+void test13(int j, bool k, int l, bool m) {
+    while ((k||m)&&true) {
+        bool x; 
+        x = 7 != 7; 
+    }
+    return 6/7;
+}
+// Tests a large expression
+int test14(int s, bool t) {
+    t = !((7 + s - 5 * 4 / 2) == true) && (7 <=5 )||(7 != 7)||(7 <5 )||(7 >=5 )||(7 >5 );
+}
+// Tests strings
+bool test16(bool b){
+    int x; 
+    x = "hello" + "string"; 
+}
+// Tests nested statements
+bool test17(bool b){
+    int x; 
+    while(true || false && true){
+        if(true){
+            if(false){
+                while(true){
+                }
+            }
+        }
     }
 }
-void test5(){
-    bool x;
-    x = false;
-    x(); //Expected Error: Attempt to call a non-function
-    test3(x); //Expected Error: Function call with wrong number of args
-    test4(x); //Expected Error: Type of actual does not match type of formal
-    test4(1 > 2); //Expected Error: Type of actual does not match type of formal
+// Tests assignments with function calls
+int test18(int first, int second){
+    int third;
+    third = test5(first, second);
+    third = test5(first + 2, second - first);
 }
-void test6(){
-    bool x;
-    if (test5() == test3()){ //Expected Error: Equality operator applied to void functions
+// Tests access to global variables in higher scopes
+int test19(){
+    int something;
+    something = x;
+    if (y){
+        something = 2;
+        something = something + 2;
+        y = true;
     }
-    x = test5 != test4; //Expected Error: Equality operator applied to functions
 }
-void test7(){
-    test6 = test5; //Expected Error: Function Assignment
+// Tests structs
+void test20() {
+    x = ghi1.z1;
+    x = ghi2.g;
+    x = ghi6.ghi5.ghi3.z1;
+    ghi6.ghi5.e = x;
+    y = ghi2.f && ghi1.z2 && ghi4.ghi5.ghi3.z2;
+}
+// Tests duplicate functions
+void test20(int i){
+    x = i;
+}
+// Comprehensive Tests
+int main() { 
+    int a1; # comment
+    int a2;
+    int a3;
+    bool b1;
+    bool b2;
+    bool b3;
+    a1 = 1 + 2 * 3 * ( 3 - 1 ) / 3;
+    a1 = -a2;
+    b1 = false || true && false;
+    b2 = a1 >= a2 || a1 <= a2 || a1 < a2 || a1 > a2 || a1 != a2;
+    b3 = b1 || b2 && (b1 && !b2);
+    x = 1; 
+    y = true; 
+    if (y) { 
+        return; 
+    } 
+    if (!b1) {
+        int c;
+        bool d;
+        c = 3;
+        d = true && false;
+        if (b2) {
+            while (d) {
+                c++;
+            }
+            return c + 1;
+        }
+        else {
+            return c - 1;
+        }
+    }
+    while (a1 > a2) {
+        int x;
+        x = 4;
+        a1 = x;
+    }
+    a1 = test5(a2, b2);
+    a2 = test5(a2 + a3, b2 || b3);
 }
