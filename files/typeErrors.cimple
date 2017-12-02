@@ -62,7 +62,7 @@ void test6(){
 void test7(){
     test6 = test5; //Expected Error: Function Assignment
 }
-void test8(){//Expected Errors : Arithmetic operator applied to non-numeric operand - 13
+void test8(){//Expected Errors : Arithmetic operator applied to non-numeric operand - 14
     int b;
     bool c;
     b = b + true; 
@@ -79,12 +79,12 @@ void test8(){//Expected Errors : Arithmetic operator applied to non-numeric oper
     abc++;
     abc--;
 }
-void test9(){//Expected Errors : Relational operator applied to non-numeric operand - 6
+void test9(){//Expected Errors : Relational operator applied to non-numeric operand - 7
     int b;
     bool c;
     c = c < 6;
     c = 5 > c;
-    c = c >=c;
+    c = c >= c;
     c = 6 <= abc;
     c = hij.efg < 5;
     c = test7() > 2; 

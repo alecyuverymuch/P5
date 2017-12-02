@@ -38,13 +38,17 @@ public class P5 {
 	 */
 	private P5(String[] args){
     	//Parse arguments    	
-        if (args.length < 2) {
+        if (args.length < 3) {
         	String msg = "please supply name of file to be parsed"
-        			+ "and name of file for unparsed version.";
+        			+ "and name of file for unparsed version and name of error file.";
         	pukeAndDie(msg);
         }
-		
 		try{
+			PrintStream ps = null;
+			FileOutputStream fos = null;
+			fos = new FileOutputStream(args[2]);
+			ps = new PrintStream(fos);
+            System.setErr(ps);
 			setInfile(args[0]);
 			setOutfile(args[1]);
 		} catch(BadInfileException e){
