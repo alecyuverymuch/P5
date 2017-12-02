@@ -1730,7 +1730,7 @@ class CallExpNode extends ExpNode {
             boolean error = false;
             for (int i = 0; i < actualsList.size(); i++) {
                 if (!actualsList.get(i).typeCheck().equals(formalsList.get(i))){
-                    ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                    ErrMsg.fatal(myId.lineNum(), actualsList.get(i).charNum(),
                         "Type of actual does not match type of formal");
                     error = true;
                 }
