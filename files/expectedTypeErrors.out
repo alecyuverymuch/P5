@@ -37,3 +37,45 @@
 87:14 ***ERROR*** Relational operator applied to non-numeric operand
 88:14 ***ERROR*** Relational operator applied to non-numeric operand
 89:13 ***ERROR*** Relational operator applied to non-numeric operand
+90:9 ***ERROR*** Relational operator applied to non-numeric operand
+95:10 ***ERROR*** Logical operator applied to non-bool operand
+96:18 ***ERROR*** Logical operator applied to non-bool operand
+97:9 ***ERROR*** Logical operator applied to non-bool operand
+98:13 ***ERROR*** Logical operator applied to non-bool operand
+99:10 ***ERROR*** Logical operator applied to non-bool operand
+100:9 ***ERROR*** Logical operator applied to non-bool operand
+105:8 ***ERROR*** Non-bool expression used as an if condition
+106:8 ***ERROR*** Non-bool expression used as an if condition
+107:12 ***ERROR*** Non-bool expression used as an if condition
+108:8 ***ERROR*** Non-bool expression used as an if condition
+109:8 ***ERROR*** Non-bool expression used as an if condition
+114:11 ***ERROR*** Non-bool expression used as a while condition
+115:11 ***ERROR*** Non-bool expression used as a while condition
+116:15 ***ERROR*** Non-bool expression used as a while condition
+117:11 ***ERROR*** Non-bool expression used as a while condition
+118:11 ***ERROR*** Non-bool expression used as a while condition
+123:4 ***ERROR*** Type mismatch
+124:4 ***ERROR*** Type mismatch
+125:4 ***ERROR*** Type mismatch
+126:4 ***ERROR*** Type mismatch
+127:4 ***ERROR*** Type mismatch
+128:4 ***ERROR*** Type mismatch
+129:4 ***ERROR*** Type mismatch
+130:8 ***ERROR*** Type mismatch
+131:8 ***ERROR*** Type mismatch
+132:8 ***ERROR*** Type mismatch
+133:8 ***ERROR*** Type mismatch
+134:8 ***ERROR*** Type mismatch
+135:8 ***ERROR*** Type mismatch
+136:8 ***ERROR*** Type mismatch
+137:8 ***ERROR*** Type mismatch
+138:8 ***ERROR*** Type mismatch
+139:12 ***ERROR*** Type mismatch
+143:12 ***ERROR*** Attempt to write a struct name
+144:16 ***ERROR*** Attempt to write a struct variable
+145:11 ***ERROR*** Attempt to read a struct name
+146:15 ***ERROR*** Attempt to read a struct variable
+147:8 ***ERROR*** Equality operator applied to struct names
+148:12 ***ERROR*** Equality operator applied to struct variables
+149:4 ***ERROR*** Struct name assignment
+150:8 ***ERROR*** Struct variable assignment
