@@ -52,11 +52,9 @@ void test5(){
 }
 void test6(){
     if (test5() == test4()){ //Expected Error: Equality operator applied to void functions
-
     }
-    if (test5 == test4){ //Expected Error: Equality operator applied to functions
-
-    }
+    bool x;
+    x = test5 == test4; //Expected Error: Equality operator applied to functions
 }
 void test7(){
     test6 = test5(); //Expected Error: Function Assignment
