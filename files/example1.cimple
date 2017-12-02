@@ -115,8 +115,8 @@ int test14(int s, bool t) {
 }
 // Tests strings
 bool test16(bool b){
-    int x; 
-    x = "hello" + "string"; 
+    cout << "hello world"; 
+    return b;
 }
 // Tests nested statements
 bool test17(bool b){
@@ -194,6 +194,6 @@ int main() {
         x = 4;
         a1 = x;
     }
-    a1 = test5(a2, b2);
-    a2 = test5(a2 + a3, b2 || b3);
+    a1 = test5(a2, 32);
+    b2 = test6(b1, b2 || b3);
 }
