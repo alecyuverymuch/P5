@@ -1974,8 +1974,12 @@ class UnaryMinusNode extends UnaryExpNode {
     }
 
     public Type typeCheck(){
-        if(myExp.typeCheck().isErrorType()){
+        Type e = myExp.typeCheck();
+        if(e.isErrorType()){
             return new ErrorType();
+        }
+        if (myExp instanceof CallExpNode){
+            e = ((CallExpNode)myExp).callReturnType();
         }
         if(!myExp.typeCheck().isIntType()){
             ErrMsg.fatal(myExp.lineNum(),myExp.charNum(),
