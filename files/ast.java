@@ -1230,9 +1230,10 @@ class ReturnStmtNode extends StmtNode {
             }
             else {
                 Type e = myExp.typeCheck();
+                if (myExp instanceof CallExpNode){
+                    e = ((CallExpNode)myExp).callReturnType();
+                }
                 if (!e.equals(fnType) && !e.isErrorType()){
-                    System.out.println("Fn type: " + fnType.toString());
-                    System.out.println("Exp type: " + e.toString());
                     ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
                         "Bad return value");
                 }
