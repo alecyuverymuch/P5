@@ -20,18 +20,68 @@ void test1(){
     cout << func1();
     cout << func2(x);
     cin >> x;
-    // TODO: Add Struct tests
 }
 // Tests logical operators and conditions
 void test2(){
     bool x;
     bool y;
+    bool z;
+    z = true;
+    z = false;
+    z = x || func2(2);
+    z = x && y;
+    z = x && y || z;
+    z = !x;
+    z = !x || y;
+    z = !(x || (y && z));
     x = false;
     y = !x;
-    d = x || y && !x;
-    e = (5 > 2) || (3 <= 2) && !(3 == 2);
-    if (!d || !(d && !e)){
+    d = x || y && !func2(a);
+    e = (5 > 2) || (func1() <= 2) && !(3 == 2);
+    if (!d || !(func2(a) && !e)){
+        f = x && !y || (1 < func1());
     }
-    if (((5 + 2) > 2) || !((2 - 3) == 4)){
+    while (((5 + 2) > func1()) || !((2 - 3) == 4)){
+        x = y || (!x && func2(a)) || (2 > func1() + 2);
+    }
+}
+// Tests arithmatic operators
+void test3(){
+    int x;
+    int y; 
+    int z;
+    y = 1;
+    z = 2;
+    x++;
+    x--;
+    x = 4 + 4;
+    x = 4 * 4;
+    x = 4 - 4;
+    x = 4 / 4;
+    x = y;
+    y = -x;
+    x = x + y * z - 2 * 4;
+    x = (x + y) * ((z - 2) - (2 * 4));
+    if (x > y){
+        z = (z + 4) - ((25 * y + 2) / 2);
+    }
+    while (z <= (x + 3)){
+        y = 2 + 3 - 4 * 5 / 6;
+    }
+}
+// Tests relational operations
+void test4(){
+    bool x;
+    bool y;
+    bool z;
+    x = a > b;
+    y = a < b;
+    x = a >= b;
+    y = a <= b;
+    x = (a > b) || (a <= c);
+    x = a > b && a > b || a < b;
+    z = !(a + 2 > 0 || b <= z* 4 && c < 2 + 2);
+    if (5 > 3){
+
     }
 }
