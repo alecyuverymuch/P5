@@ -1814,6 +1814,12 @@ abstract class BinaryExpNode extends ExpNode {
         boolean error = false;
         Type e1 = myExp1.typeCheck();
         Type e2 = myExp2.typeCheck();
+        if (myExp1 instanceof CallExpNode){
+            e1 = ((CallExpNode)myExp1).callReturnType();
+        }
+        if (myExp2 instanceof CallExpNode){
+            e2 = ((CallExpNode)myExp2).callReturnType();
+        }
         if(!e1.isIntType() && !e1.isErrorType()){
             ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
                      "Arithmetic operator applied to non-numeric operand");
@@ -1835,6 +1841,12 @@ abstract class BinaryExpNode extends ExpNode {
         boolean error = false;
         Type e1 = myExp1.typeCheck();
         Type e2 = myExp2.typeCheck();
+        if (myExp1 instanceof CallExpNode){
+            e1 = ((CallExpNode)myExp1).callReturnType();
+        }
+        if (myExp2 instanceof CallExpNode){
+            e2 = ((CallExpNode)myExp2).callReturnType();
+        }
         if(!e1.isIntType() && !e1.isErrorType()){
             ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
                      "Relational operator applied to non-numeric operand");
@@ -1856,6 +1868,12 @@ abstract class BinaryExpNode extends ExpNode {
         boolean error = false;
         Type e1 = myExp1.typeCheck();
         Type e2 = myExp2.typeCheck();
+        if (myExp1 instanceof CallExpNode){
+            e1 = ((CallExpNode)myExp1).callReturnType();
+        }
+        if (myExp2 instanceof CallExpNode){
+            e2 = ((CallExpNode)myExp2).callReturnType();
+        }
         if(!e1.isBoolType() && !e1.isErrorType()){
             ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
                      "Logical operator applied to non-bool operand");
@@ -2064,7 +2082,7 @@ class DivideNode extends BinaryExpNode {
     }
 
     public Type typeCheck(){
-	return arithmeticOperator();
+	    return arithmeticOperator();
     }
 }
 
@@ -2082,7 +2100,7 @@ class AndNode extends BinaryExpNode {
     }
 
     public Type typeCheck(){
-	return logicalOperator();
+	    return logicalOperator();
     }
 }
 
