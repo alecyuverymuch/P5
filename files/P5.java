@@ -55,6 +55,8 @@ public class P5 {
             pukeAndDie(e.getMessage());			
 		} catch(BadOutfileException e){
 			pukeAndDie(e.getMessage());
+		} catch(Exception e){
+			pukeAndDie(e.getMessage());
 		}
 	}
 
