@@ -51,5 +51,13 @@ void test5(){
     test4(1 > 2); //Expected Error: Type of actual does not match type of formal
 }
 void test6(){
-    
+    if (test5() == test4()){ //Expected Error: Equality operator applied to void functions
+
+    }
+    if (test5 == test4){ //Expected Error: Equality operator applied to functions
+
+    }
+}
+void test7(){
+    test6 = test5(); //Expected Error: Function Assignment
 }

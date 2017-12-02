@@ -1632,8 +1632,13 @@ class AssignNode extends ExpNode {
             return new ErrorType();
         }
         if(!lhs.equals(exp)){
-             ErrMsg.fatal(myLhs.lineNum(),myLhs.charNum(),
+            ErrMsg.fatal(myLhs.lineNum(),myLhs.charNum(),
                      "Type mismatch");
+            return new ErrorType();
+        }
+        if (lhs.isFnType() && exp.isFnType()){
+            ErrMsg.fatal(myLhs.lineNum(),myLhs.charNum(),
+                "Function assignment");
             return new ErrorType();
         }
         if(lhs.isStructDefType()){
