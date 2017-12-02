@@ -1229,7 +1229,10 @@ class ReturnStmtNode extends StmtNode {
                 ErrMsg.fatal(0, 0, "Missing return value");
             }
             else {
-                if (!myExp.typeCheck().equals(fnType) && !myExp.typeCheck().isErrorType()){
+                Type e = myExp.typeCheck();
+                if (!e.equals(fnType) && !e.isErrorType()){
+                    System.out.println("Fn type: " + fnType.toString());
+                    System.out.println("Exp type: " + e.toString());
                     ErrMsg.fatal(myExp.lineNum(), myExp.charNum(),
                         "Bad return value");
                 }
