@@ -1918,7 +1918,7 @@ abstract class BinaryExpNode extends ExpNode {
             }
         }
         if (e1.isFnType() && e2.isFnType()){
-            if (e1 instanceof IdNode || e2 instanceof IdNode){
+            if (myExp1 instanceof IdNode || myExp2 instanceof IdNode){
                 ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), 
                     "Equality operator applied to functions");
                 return new ErrorType();
