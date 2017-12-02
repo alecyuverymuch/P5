@@ -6,6 +6,11 @@ bool e;
 bool f;
 struct G { int one; bool two; };
 struct G g;
+struct H {struct G one; int two; bool three;};
+struct H h;
+struct abc {int x; bool y; };
+struct def {struct abc efg; int a; bool b;};
+struct def hij; 
 int func1(){
     return a;
 }
@@ -17,9 +22,21 @@ void test1(){
     int x;
     x = 0;
     cout << x;
+    cin >> a;
+    cin >> d;
+    cout << a + b + c;
+    cout << d || e && f;
+    cout << true;
+    cout << 5;
+    cout << "hello";
     cout << func1();
     cout << func2(x);
+    cin >> g.one;
+    cin >> h.one.two;
+    cout << g.two;
+    cout << h.one.one;
     cin >> x;
+    return;
 }
 // Tests logical operators and conditions
 void test2(){
@@ -38,12 +55,13 @@ void test2(){
     y = !x;
     d = x || y && !func2(a);
     e = (5 > 2) || (-func1() <= 2) && !(-3 == 2);
-    if (!d || !(func2(a) && !e)){
-        f = x && !y || (1 < func1());
+    if (!d || !(func2(a) && !e) && (h.one.two || !g.two){
+        f = x && !y || (1 < func1() && (g.one > 1));
     }
-    while (((5 + 2) > -func1()) || !((2 - 3) == 4)){
-        x = y || (!x && func2(a)) || (2 > func1() + 2);
+    while (((5 + 2) > -func1()) || !((2 - g.one) == 4)){
+        x = h.one.two || (!x && func2(a)) || (2 > func1() + g.one);
     }
+    return;
 }
 // Tests arithmatic operators
 void test3(){
@@ -54,6 +72,8 @@ void test3(){
     z = 2;
     x++;
     x--;
+    h.two++;
+    h.one.one--;
     x = 4 + 4;
     x = 4 * 4;
     x = 4 - 4;
@@ -62,12 +82,15 @@ void test3(){
     y = -x;
     x = x + func1() * z - 2 * 4;
     x = (x + y) * ((-func1()- 2) - (2 * 4));
-    if (x > func1()){
-        z = (z + 4) - ((25 * func1() + 2) / 2);
+    a = func1() + 7 - func1() * 5 / func1(); 
+    a = h.one.one + 7 - h.one.one * 5 / g.one;
+    if (x > func1() || x > h.one.one){
+        z = (z + 4) - ((25 * func1() + 2) / 2 + h.one.one);
     }
-    while (z <= (x + 3)){
-        y = 2 + 3 - 4 * 5 / 6;
+    while (z <= (x + 3) && z > h.one.one + 1){
+        y = 2 + 3 - 4 * 5 / func1() * h.one.one;
     }
+    return;
 }
 // Tests relational operations
 void test4(){
@@ -81,10 +104,132 @@ void test4(){
     x = (a > func1()) || (a <= c);
     x = a > b && a > b || -func1() < b;
     z = !(a + 2 > 0 || b <= a * 4 && c < 2 + 2 || !func2(a));
-    if (5 > 3){
-        x = func1() <= 3 || a + b + c >= 0;
+    y = !(func1() > 3 && 2 < func1() || func1() >= 3 || a <= func1());
+    b = !(h.one.one > 3 && 2 < h.two || h.one.one >= 3 || a <= h.two);
+    if (5 > 3 || func1() > h.two){
+        x = func1() <= 3 || a + b + c >= 0 || h.two > 3;
     }
-    while(func2(a) || (a >= b + func1())){
-        y = 3 > 0 || 2000 <= -func1();
+    while(func2(a) || (a >= b + func1()) || h.one.two){
+        y = 3 > 0 || 2000 <= -func1() + h.one.one;
+    }
+    return;
+}
+// Tests equality operations
+void test5(){
+    bool x;
+    bool y;
+    bool z;
+    x = false;
+    y = true;
+    z = x == true || -5 != a && y != false || 1 == 1;
+    y = func1() == 5 || !func2(a) != z;
+    x = h.one.two == true || -5 != h.two && h.three != false || h.one.one == h.two;
+    if (5 == 3 || func1() != h.two){
+        x = func1() != 3 || a + b + c == 0 || h.two == 3;
+    }
+    while(func2(a) || (a == b + func1()) || h.one.two == false){
+        y = 3 == 0 || 2000 != -func1() + h.one.one;
+    }
+}
+void ifFunc(int a,bool b){
+    if (a > 1 && 2 < -2 || a >= a || 3 <= a && true || false){
+    	a = a+1+a-a*a*2/a/-3;
+	    b = !(a > 1 && 2 < -2 || a >= a || 3 <= a && true || false);
+    	b = b == true || -5 != a && b != false || 1 == 1;
+	    cin >> a;
+    	cin >> b;
+    	cout << a;
+    	cout << b;
+    	cout << true;
+   	    cout << 5;
+    	cout << "hello";
+	    a++;
+    	a--;
+    }
+    else {
+	    a = a+1+a-a*a*2/a/-3;
+	    b = !(a > 1 && 2 < -2 || a >= a || 3 <= a && true || false);
+    	b = b == true || -5 != a && b != false || 1 == 1;
+	    cin >> a;
+    	cin >> b;
+    	cout << a;
+    	cout << b;
+    	cout << true;
+   	    cout << 5;
+    	cout << "hello";
+	    a++;
+    	a--;
+    }
+    if (hij.efg.x > 3 && 2 < hij.efg.x || hij.efg.x >= 3 || a <= hij.efg.x){
+	    a = hij.efg.x + 7 - hij.efg.x * 5 / hij.efg.x; 
+  	    hij.efg.x++;
+ 	    hij.efg.x--;
+  	    b = !(hij.efg.x > 3 && 2 < hij.efg.x || hij.efg.x >= 3 || a <= hij.efg.x);
+ 	    b = hij.efg.y == true || -5 != hij.efg.x && hij.efg.y != false || hij.efg.y == 	
+        hij.efg.y;
+	    cin >> hij.efg.x;
+ 	    cin >> hij.efg.y;
+ 	    cout << hij.efg.y;
+ 	    cout << hij.efg.x;
+    }
+    else {
+	    a = hij.efg.x + 7 - hij.efg.x * 5 / hij.efg.x; 
+  	    hij.efg.x++;
+ 	    hij.efg.x--;
+  	    b = !(hij.efg.x > 3 && 2 < hij.efg.x || hij.efg.x >= 3 || a <= hij.efg.x);
+ 	    b = hij.efg.y == true || -5 != hij.efg.x && hij.efg.y != false || hij.efg.y == 	
+        hij.efg.y;
+	    cin >> hij.efg.x;
+ 	    cin >> hij.efg.y;
+ 	    cout << hij.efg.y;
+ 	    cout << hij.efg.x;
+    }
+    if (!(func1() > 3 && 2 < func1() || func1() >= 3 || a <= func1())){
+        a = func1() + 7 - func1() * 5 / func1(); 
+   	    b = !(func1() > 3 && 2 < func1() || func1() >= 3 || a <= func1());
+   	    b = func2(a) == true || -5 != func1() && func2(a) != false || func2(a) == func2(a);
+   	    cout << func1();
+  	    cout << func2(2);
+    }
+    else {
+	    a = func1() + 7 - func1() * 5 / func1(); 
+   	    b = !(func1() > 3 && 2 < func1() || func1() >= 3 || a <= func1());
+   	    b = func2(a) == true || -5 != func1() && func2(a) != false || func2(a) == func2(a);
+   	    cout << func1();
+        cout << func2(1);
+  }
+  return;
+}
+
+void whileFunc(int a, bool b){
+    while(b == true || -5 != a && b != false || 1 == 1){
+		a = a+1+a-a*a*2/a/-3;
+		b = !(a > 1 && 2 < -2 || a >= a || 3 <= a && true || false);
+    	b = b == true || -5 != a && b != false || 1 == 1; //comparison operators
+    	cin >> a;
+    	cin >> b;
+    	cout << a;
+    	cout << b;
+    	cout << true;
+    	cout << 5;
+    	cout << "hello";
+    }
+    while(hij.efg.y == true || -5 != hij.efg.x && hij.efg.y != false || hij.efg.y == hij.efg.y){
+		a = hij.efg.x + 7 - hij.efg.x * 5 / hij.efg.x; 
+    	hij.efg.x++;
+    	hij.efg.x--;
+   		b = !(hij.efg.x > 3 && 2 < hij.efg.x || hij.efg.x >= 3 || a <= hij.efg.x);
+   		b = hij.efg.y == true || -5 != hij.efg.x && hij.efg.y != false || hij.efg.y == hij.efg.y;
+    	cin >> hij.efg.x;
+    	cin >> hij.efg.y;
+    	cout << hij.efg.y;
+    	cout << hij.efg.x;
+    }
+    while(func2(a) == true || -5 != func1() && func2(a) != false || func2(a) == func2(a)){
+		a = func1() + 7 - func1() * 5 / func1(); 
+    	b = !(func1() > 3 && 2 < func1() || func1() >= 3 || a <= func1());
+    	b = func2(1) == true || -5 != func1() && func2(2) != false || func2(3) == func2(4);
+    	cout << func1();
+   		cout << func2(a);
     }
 }

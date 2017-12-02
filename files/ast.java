@@ -1584,10 +1584,7 @@ class DotAccessExpNode extends ExpNode {
     }    
 
     public Type typeCheck(){
-        /*****
-         * TODO
-         */
-	    return mySym.getType(); 
+        return myId.sym().getType(); 
     }
     
     public void unparse(PrintWriter p, int indent) {
