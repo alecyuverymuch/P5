@@ -121,6 +121,8 @@ void test5(){
     bool z;
     x = false;
     y = true;
+    z = y == x;
+    z = x != y;
     z = x == true || -5 != a && y != false || 1 == 1;
     y = 5 == func1() || !func2(a) != z;
     x = h.one.two == true || -5 != h.two && h.three != false || h.one.one == h.two;
@@ -131,7 +133,8 @@ void test5(){
         y = 3 == 0 || 2000 != -func1() + h.one.one;
     }
 }
-void ifFunc(int a,bool b){
+// Tests contents in an if or if else statement
+void test6(int a,bool b){
     if (a > 1 && 2 < -2 || a >= a || 3 <= a && true || false){
     	a = a+1+a-a*a*2/a/-3;
 	    b = !(a > 1 && 2 < -2 || a >= a || 3 <= a && true || false);
@@ -200,8 +203,8 @@ void ifFunc(int a,bool b){
   }
   return;
 }
-
-void whileFunc(int a, bool b){
+// Tests contents in a while statement
+void test7(int a, bool b){
     while(b == true || -5 != a && b != false || 1 == 1){
 		a = a+1+a-a*a*2/a/-3;
 		b = !(a > 1 && 2 < -2 || a >= a || 3 <= a && true || false);
@@ -232,4 +235,17 @@ void whileFunc(int a, bool b){
     	cout << func1();
    		cout << func2(a);
     }
+}
+// Tests functions
+int test8(){
+    if (d){
+        return 5;
+    }
+    if (e){
+        return a;
+    }
+    if (f){
+        return g.one;
+    }
+    return func1();
 }
