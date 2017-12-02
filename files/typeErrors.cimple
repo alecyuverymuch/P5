@@ -71,7 +71,7 @@ void test8(){//Expected Errors : Arithmetic operator applied to non-numeric oper
     b = 5 / c;
     b = hij.efg + 5;
     b = abc - 6;
-    b = test9() + 2;
+    b = test7() + 2;
     c++;
     c--;
     hij.efg++;
@@ -87,7 +87,7 @@ void test9(){//Expected Errors : Relational operator applied to non-numeric oper
     c = c >=c;
     c = 6 <= abc;
     c = hij.efg < 5;
-    c = test9() > 2; 
+    c = test7() > 2; 
 }
 void test10(){//Expected Errors : Logical operator applied to non-bool operand - 6
     int b;
