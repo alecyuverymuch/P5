@@ -80,7 +80,7 @@ void test4(){
     y = a <= b;
     x = (a > func1()) || (a <= c);
     x = a > b && a > b || -func1() < b;
-    z = !(a + 2 > 0 || b <= z* 4 && c < 2 + 2 || !func2(a));
+    z = !(a + 2 > 0 || b <= a * 4 && c < 2 + 2 || !func2(a));
     if (5 > 3){
         x = func1() <= 3 || a + b + c >= 0;
     }
