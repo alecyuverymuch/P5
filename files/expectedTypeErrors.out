@@ -12,8 +12,8 @@
 45:11 ***ERROR*** Non-bool expression used as a while condition
 51:5 ***ERROR*** Attempt to call a non-function
 52:5 ***ERROR*** Function call with wrong number of args
-53:5 ***ERROR*** Type of actual does not match type of formal
-54:5 ***ERROR*** Type of actual does not match type of formal
+53:11 ***ERROR*** Type of actual does not match type of formal
+54:11 ***ERROR*** Type of actual does not match type of formal
 58:9 ***ERROR*** Equality operator applied to void functions
 60:9 ***ERROR*** Equality operator applied to functions
 63:5 ***ERROR*** Function assignment
