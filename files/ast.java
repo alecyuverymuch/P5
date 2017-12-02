@@ -1727,14 +1727,17 @@ class CallExpNode extends ExpNode {
             int index = 0;
             LinkedList<ExpNode> actualsList = new LinkedList<ExpNode>(myExpList.getList());
             LinkedList<Type> formalsList = new LinkedList<Type>(((FnSym)sym).getParamTypes());
+            boolean error = false;
             for (int i = 0; i < actualsList.size(); i++) {
                 if (!actualsList.get(i).typeCheck().equals(formalsList.get(i))){
                     ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                         "Type of actual does not match type of formal");
-                    return new ErrorType();
+                    error = true;
                 }
             }
-            
+            if (error){
+                return new ErrorType();
+            }
         }
         // Check params
 	    return idType; //return func call type
