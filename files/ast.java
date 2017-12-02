@@ -1900,6 +1900,12 @@ abstract class BinaryExpNode extends ExpNode {
         if(e1.isErrorType() || e2.isErrorType()){
              return new ErrorType();
         }
+        if (myExp1 instanceof CallExpNode){
+            e1 = ((CallExpNode)myExp1).callReturnType();
+        }
+        if (myExp2 instanceof CallExpNode){
+            e2 = ((CallExpNode)myExp2).callReturnType();
+        }
         if(!e1.equals(e2)){
              ErrMsg.fatal(myExp1.lineNum(),myExp1.charNum(),
                      "Type mismatch");
